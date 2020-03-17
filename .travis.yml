@@ -1,3 +1,6 @@
+notifications:
+  slack: aurapro:fSvcq8RpdYOo6Jg8BOgoiXzV
+
 language: node_js
 node_js:
   - "10.15.2"
