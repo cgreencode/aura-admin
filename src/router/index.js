@@ -182,20 +182,6 @@ const routes = [{
     }
   },
   {
-    path: '/connect',
-    name: "connect",
-    component: () => import( /* webpackChunkName: "notifications" */ '@/views/Connect'),
-    meta: {
-      requiresAuth: true,
-      title: "Connect",
-      access: {
-        "Super Admin": true,
-        "Admin": true,
-        "Viewer":true
-      }
-    }
-  },
-  {
     path: '/emails',
     name: "Email",
     component: () => import( /* webpackChunkName: "email" */ '@/views/Email'),
