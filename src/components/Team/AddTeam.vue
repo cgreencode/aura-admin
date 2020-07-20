@@ -53,7 +53,7 @@
                       <p style="font-size:120%" class="my-0">Team Member Info</p>
                     </v-col>
 
-                    <v-col md="6" xs="6" cols="12" class="pa-1 ma-0">
+                    <v-col md="4" xs="4" cols="12" class="pa-1 ma-0">
                       <v-text-field
                         v-model="name"
                         :rules="nameRules"
@@ -63,7 +63,7 @@
                       ></v-text-field>
                     </v-col>
 
-                    <v-col md="6" xs="6" cols="12" class="pa-1 ma-0">
+                    <v-col md="4" xs="4" cols="12" class="pa-1 ma-0">
                       <v-text-field
                         v-model="designation"
                         class="ma-0"
@@ -72,11 +72,9 @@
                         outlined
                       ></v-text-field>
                     </v-col>
-                    <v-col md="7" xs="7" cols="6" class="pa-1 py-0 ma-0">
+
+                    <v-col md="4" xs="4" cols="12" class="pa-1 ma-0">
                       <v-text-field v-model="imageURL" class="ma-0" label="Image URL" outlined></v-text-field>
-                    </v-col>
-                    <v-col md="4" xs="4" cols="6" class="pa-1 py-0 ma-0">
-                      <UploadImage type="team" :userId="id" @message="showMessageSnakeBar" @uploadedImage="imageUploadDone"/>
                     </v-col>
 
                     <v-col md="12" xs="12" cols="12" class="pa-1 ma-0">
@@ -171,12 +169,13 @@ import firebase from '@/config/firebase'
 import TeamServices from '@/services/TeamServices'
 export default {
   props: [],
-  components:{
-    UploadImage: () => import("@/components/Common/ImageUpload"),
-  },
   data() {
     return {
+      imageUpload: [],
+      imagePre: "",
+      imageUploading: false,
       valid: true,
+      dialogImageUload: false,
       idRules: [
         v => !!v || "Field Value is required",
         v => (v && v.length <= 30) || "Name must be less than 30 characters"
@@ -216,12 +215,6 @@ export default {
     ...mapState(['userDetails'])
   },
   methods: {
-    showMessageSnakeBar(text){
-      this.$emit("message", text);
-    },
-    imageUploadDone(text){
-      this.imageURL = text;
-    },
     SaveEvent() {
       if (this.$refs.form.validate()) {
         this.loading = true
@@ -265,7 +258,7 @@ export default {
         }).catch(e=>{
           this.loading = false;
           console.log(e);
-          this.$emit("message", e.msg);
+          this.$emit("showSuccess", e.msg);
         })
       }
     }

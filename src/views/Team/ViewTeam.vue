@@ -24,7 +24,6 @@
             :teamData="teamInfo"
             v-if="(!showLoader && !userNotFound) && (role=='Super Admin' || role=='Admin')"
             @editedSuccess="showSnakeBar"
-            @message="showMessageSnakeBar"
           />
           <DeleteTeam
             :TeamInfo="teamInfo"
@@ -225,10 +224,6 @@ export default {
     this.getEventsDataHostedByMember()
   },
   methods: {
-    showMessageSnakeBar(text){
-      this.snakeBarMessage = text;
-      this.isSnakeBarVisible = true;
-    },
     showSnakeBar(text) {
       this.snakeBarMessage = text;
       this.isSnakeBarVisible = true;

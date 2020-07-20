@@ -69,7 +69,7 @@
             </v-tooltip>
           </v-btn-toggle>
           <!-- Toggle Menu for View -->
-          <AddPartner class="ml-2" @showSuccess="showSnakeBar" @message="showMessageSnakeBar" />
+          <AddTeam class="ml-2" @showSuccess="showSnakeBar" />
         </v-toolbar>
       </v-col>
     </v-row>
@@ -120,7 +120,7 @@
                       class="py-0" 
                       v-ripple
                       @click="gotoPartnerDetails(item.id)"
-                      style="height:100% !important;border:1px solid #e0e0e0;border-radius:5px;background:white;cursor: pointer;user-select: none;">
+                      style="border:1px solid #e0e0e0;border-radius:5px;background:white;cursor: pointer;user-select: none;">
                         <v-row class="">
                           <v-col class="grey lighten-4 pa-0" >
                             <v-img :aspect-ratio="16/6.5" :src="(item.image.length>0)?item.image:require('@/assets/img/dontremove/noimage.jpg')"></v-img>
@@ -206,7 +206,7 @@
                         <h1 class="google-font">Partners Data Not Found</h1>
                         <p class="google-font">Kindly add Partners</p>
                         <br>
-                        <AddPartner v-if="(role=='Super Admin' || role=='Admin')" class="ml-2" @showSuccess="showSnakeBar"  @message="showMessageSnakeBar"  />
+                        <AddTeam v-if="(role=='Super Admin' || role=='Admin')" class="ml-2" @showSuccess="showSnakeBar" />
                       </v-col>
                     </v-row>
                   </v-container>
@@ -230,7 +230,7 @@ export default {
   inject: ['theme'],
   components: {
     Snakebar:()=>import('@/components/Common/Snakebar'),
-    AddPartner:()=>import('@/components/Partners/AddPartner')
+    AddTeam:()=>import('@/components/Partners/AddPartner')
   },
   data: () => ({
     dataView:0,
@@ -264,10 +264,6 @@ export default {
       this.showData();
   },
   methods: {
-    showMessageSnakeBar(text){
-      this.snakeBarMessage = text;
-      this.isSnakeBarVisible = true;
-    },
     changeSnakebar(vale) {
       this.isSnakeBarVisible = vale;
     },

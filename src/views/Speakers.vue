@@ -86,7 +86,7 @@
           </v-btn-toggle>
           <!-- Toggle Menu for View -->
             
-          <AddSpeaker v-if="(role=='Super Admin' || role=='Admin')" class="ml-2" @showSuccess="showSnakeBar" @message="showMessageSnakeBar"/>
+          <AddSpeaker v-if="(role=='Super Admin' || role=='Admin')" class="ml-2" @showSuccess="showSnakeBar" />
         </v-toolbar>
       </v-col>
     </v-row>
@@ -221,7 +221,7 @@
                         <h1 class="google-font">Speakers Data Not Found</h1>
                         <p class="google-font">Kindly add Speaker</p>
                         <br />
-                        <AddSpeaker v-if="(role=='Super Admin' || role=='Admin')" class="ml-2" @showSuccess="showSnakeBar" @message="showMessageSnakeBar" />
+                        <AddSpeaker @showSuccess="showSnakeBar" />
                       </v-col>
                     </v-row>
                   </v-container>
@@ -283,10 +283,6 @@ export default {
     openCloseSearch() {
       this.isSearch = !this.isSearch;
       this.search = "";
-    },
-    showMessageSnakeBar(text){
-      this.snakeBarMessage = text;
-      this.isSnakeBarVisible = true;
     },
     showSnakeBar(text) {
       this.snakeBarMessage = text;
