@@ -48,8 +48,6 @@
       :loading="isLoading"
       :headers="headers"
       :search="search"
-      sort-by="date"
-      sort-desc="true"
       :items="events"
       :items-per-page="5"
       class="elevation-0 ma-0 pa-0"

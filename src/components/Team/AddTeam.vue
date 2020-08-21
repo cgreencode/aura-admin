@@ -189,7 +189,7 @@ export default {
         v => !!v || "E-mail is required",
         v => /.+@.+\..+/.test(v) || "E-mail must be valid"
       ],
-      teamRole: ["Core Team", "Organizing Team", "Volunteer"],
+      teamRole: ["Organizing Team", "Core Team", "Volunteer"],
       dialog: false,
       loading: false,
       items: [true, false],
