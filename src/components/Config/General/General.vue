@@ -34,12 +34,6 @@
               ></v-text-field>
               <v-text-field
                 class="my-0 py-0"
-                label="Community Short Name"
-                v-model="communityinfo.shortName"
-                outlined
-              ></v-text-field>
-              <v-text-field
-                class="my-0 py-0"
                 label="Community Email"
                 type="email"
                 v-model="communityinfo.email"
@@ -251,7 +245,6 @@ export default {
     toolbarImage:"",
     communityinfo: {
       name: "",
-      shortName: "",
       email:"",
       website: "",
       meetupLink: "",
